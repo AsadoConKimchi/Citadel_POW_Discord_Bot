@@ -1,0 +1,21 @@
+{
+  "name": "citadel-pow-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot for collecting reactions on POW certification posts",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "scrape": "node scrape-existing-messages.js",
+    "dev": "nodemon bot.js"
+  },
+  "keywords": ["discord", "bot", "citadel", "pow"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
