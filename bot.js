@@ -2,7 +2,7 @@
 // 실시간 반응 모니터링 + POW 인증카드 전송 + 백엔드 API 연동
 
 require('dotenv').config();
-const { Client, GatewayIntentBits, Events, AttachmentBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, Events, AttachmentBuilder, Partials } = require('discord.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -24,12 +24,18 @@ if (!POW_CHANNEL_ID) {
 }
 
 // Discord Client 생성
+// Partials: 캐시되지 않은 메시지에 대한 리액션 이벤트 수신을 위해 필요
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMessageReactions,
+  ],
+  partials: [
+    Partials.Message,
+    Partials.Channel,
+    Partials.Reaction,
   ],
 });
 
